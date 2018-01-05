@@ -1,7 +1,7 @@
 /**
  * External dependencies
  */
-import { createElement, Component, cloneElement, Children } from 'react';
+import { createElement, Component, cloneElement, Children, Fragment } from 'react';
 import { render, findDOMNode, createPortal, unmountComponentAtNode } from 'react-dom';
 import { renderToStaticMarkup } from 'react-dom/server';
 import { camelCase, flowRight, isString, upperFirst } from 'lodash';
@@ -38,6 +38,11 @@ export { unmountComponentAtNode };
  * A base class to create WordPress Components (Refs, state and lifecycle hooks)
  */
 export { Component };
+
+/**
+ * A component which renders its children without any wrapping element.
+ */
+export { Fragment };
 
 /**
  * Creates a copy of an element with extended props.
