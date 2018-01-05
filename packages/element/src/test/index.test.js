@@ -6,7 +6,6 @@ import {
 	createElement,
 	concatChildren,
 	renderToString,
-	switchChildrenNodeName,
 	getWrapperDisplayName,
 } from '../';
 
@@ -28,34 +27,6 @@ describe( 'element', () => {
 			expect( concat ).toHaveLength( 2 );
 			expect( concat[ 0 ].key ).toBe( '0,0' );
 			expect( concat[ 1 ].key ).toBe( '1,0' );
-		} );
-	} );
-
-	describe( 'switchChildrenNodeName', () => {
-		it( 'should return undefined for undefined children', () => {
-			expect( switchChildrenNodeName() ).toBeUndefined();
-		} );
-
-		it( 'should switch strings', () => {
-			const children = switchChildrenNodeName( [ 'a', 'b' ], 'strong' );
-			expect( children ).toHaveLength( 2 );
-			expect( children[ 0 ].type ).toBe( 'strong' );
-			expect( children[ 0 ].props.children ).toBe( 'a' );
-			expect( children[ 1 ].type ).toBe( 'strong' );
-			expect( children[ 1 ].props.children ).toBe( 'b' );
-		} );
-
-		it( 'should switch elements', () => {
-			const children = switchChildrenNodeName( [
-				createElement( 'strong', { align: 'left' }, 'Courgette' ),
-				createElement( 'strong', {}, 'Concombre' ),
-			], 'em' );
-			expect( children ).toHaveLength( 2 );
-			expect( children[ 0 ].type ).toBe( 'em' );
-			expect( children[ 0 ].props.children ).toBe( 'Courgette' );
-			expect( children[ 0 ].props.align ).toBe( 'left' );
-			expect( children[ 1 ].type ).toBe( 'em' );
-			expect( children[ 1 ].props.children ).toBe( 'Concombre' );
 		} );
 	} );
 

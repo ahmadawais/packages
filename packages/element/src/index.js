@@ -99,23 +99,6 @@ export function concatChildren( ...childrenArguments ) {
 }
 
 /**
- * Switches the nodeName of all the elements in the children object
- *
- * @param  {?Object} children  Children object
- * @param  {String}  nodeName  Node name
- * @return {?Object}           The updated children object
- */
-export function switchChildrenNodeName( children, nodeName ) {
-	return children && Children.map( children, ( elt, index ) => {
-		if ( isString( elt ) ) {
-			return createElement( nodeName, { key: index }, elt );
-		}
-		const { children: childrenProp, ...props } = elt.props;
-		return createElement( nodeName, { key: index, ...props }, childrenProp );
-	} );
-}
-
-/**
  * Composes multiple higher-order components into a single higher-order component. Performs right-to-left function
  * composition, where each successive invocation is supplied the return value of the previous.
  *
